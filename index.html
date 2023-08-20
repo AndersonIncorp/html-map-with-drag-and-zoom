@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+		<title>Simple image map example, pan/drag and pinch/zoom via css transfrom</title>
+		<style>
+			body, html {
+				padding: 0;
+				margin: 0;
+				overflow: hidden;
+				height: 100%;
+				-webkit-overflow-scrolling: touch;
+			}
+			.container {
+				display: flex;
+				height: 100vh;
+			}
+			.content {
+				background: lightgray;
+				flex-grow: 1;
+				height: 100%;
+   	 			width: 100%;
+			}
+			.map-container {
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			.map {
+				will-change: -webkit-transform, transform;
+			}
+			.map * {
+				-webkit-user-drag: none;
+				-khtml-user-drag: none;
+				-moz-user-drag: none;
+				-o-user-drag: none;
+				-webkit-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="content">
+				<div class="map-container" id="mapContainer">
+					<div class="map" id="map" style="-webkit-transform: scale(1) translate(0, 0) translate3d(0,0,0); -webkit-transform-origin: 0 0;">
+						<!-- GTA:SA map used as multiple image example, single image would be more efficient -->
+						<div style="position: relative; background: black;">
+							<img width="128" height="128" style="position: absolute; top: 0px; left: 0px;" src="map/radar00.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 0px; left: 128px;" src="map/radar01.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 0px; left: 256px;" src="map/radar02.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 0px; left: 384px;" src="map/radar03.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 0px; left: 512px;" src="map/radar04.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 0px; left: 640px;" src="map/radar05.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 0px; left: 768px;" src="map/radar06.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 0px; left: 896px;" src="map/radar07.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 0px; left: 1024px;" src="map/radar08.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 0px; left: 1152px;" src="map/radar09.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 0px; left: 1280px;" src="map/radar10.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 0px; left: 1408px;" src="map/radar11.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 128px; left: 0px;" src="map/radar12.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 128px; left: 128px;" src="map/radar13.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 128px; left: 256px;" src="map/radar14.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 128px; left: 384px;" src="map/radar15.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 128px; left: 512px;" src="map/radar16.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 128px; left: 640px;" src="map/radar17.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 128px; left: 768px;" src="map/radar18.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 128px; left: 896px;" src="map/radar19.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 128px; left: 1024px;" src="map/radar20.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 128px; left: 1152px;" src="map/radar21.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 128px; left: 1280px;" src="map/radar22.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 128px; left: 1408px;" src="map/radar23.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 256px; left: 0px;" src="map/radar24.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 256px; left: 128px;" src="map/radar25.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 256px; left: 256px;" src="map/radar26.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 256px; left: 384px;" src="map/radar27.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 256px; left: 512px;" src="map/radar28.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 256px; left: 640px;" src="map/radar29.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 256px; left: 768px;" src="map/radar30.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 256px; left: 896px;" src="map/radar31.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 256px; left: 1024px;" src="map/radar32.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 256px; left: 1152px;" src="map/radar33.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 256px; left: 1280px;" src="map/radar34.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 256px; left: 1408px;" src="map/radar35.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 384px; left: 0px;" src="map/radar36.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 384px; left: 128px;" src="map/radar37.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 384px; left: 256px;" src="map/radar38.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 384px; left: 384px;" src="map/radar39.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 384px; left: 512px;" src="map/radar40.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 384px; left: 640px;" src="map/radar41.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 384px; left: 768px;" src="map/radar42.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 384px; left: 896px;" src="map/radar43.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 384px; left: 1024px;" src="map/radar44.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 384px; left: 1152px;" src="map/radar45.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 384px; left: 1280px;" src="map/radar46.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 384px; left: 1408px;" src="map/radar47.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 512px; left: 0px;" src="map/radar48.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 512px; left: 128px;" src="map/radar49.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 512px; left: 256px;" src="map/radar50.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 512px; left: 384px;" src="map/radar51.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 512px; left: 512px;" src="map/radar52.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 512px; left: 640px;" src="map/radar53.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 512px; left: 768px;" src="map/radar54.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 512px; left: 896px;" src="map/radar55.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 512px; left: 1024px;" src="map/radar56.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 512px; left: 1152px;" src="map/radar57.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 512px; left: 1280px;" src="map/radar58.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 512px; left: 1408px;" src="map/radar59.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 640px; left: 0px;" src="map/radar60.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 640px; left: 128px;" src="map/radar61.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 640px; left: 256px;" src="map/radar62.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 640px; left: 384px;" src="map/radar63.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 640px; left: 512px;" src="map/radar64.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 640px; left: 640px;" src="map/radar65.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 640px; left: 768px;" src="map/radar66.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 640px; left: 896px;" src="map/radar67.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 640px; left: 1024px;" src="map/radar68.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 640px; left: 1152px;" src="map/radar69.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 640px; left: 1280px;" src="map/radar70.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 640px; left: 1408px;" src="map/radar71.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 768px; left: 0px;" src="map/radar72.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 768px; left: 128px;" src="map/radar73.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 768px; left: 256px;" src="map/radar74.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 768px; left: 384px;" src="map/radar75.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 768px; left: 512px;" src="map/radar76.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 768px; left: 640px;" src="map/radar77.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 768px; left: 768px;" src="map/radar78.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 768px; left: 896px;" src="map/radar79.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 768px; left: 1024px;" src="map/radar80.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 768px; left: 1152px;" src="map/radar81.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 768px; left: 1280px;" src="map/radar82.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 768px; left: 1408px;" src="map/radar83.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 896px; left: 0px;" src="map/radar84.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 896px; left: 128px;" src="map/radar85.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 896px; left: 256px;" src="map/radar86.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 896px; left: 384px;" src="map/radar87.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 896px; left: 512px;" src="map/radar88.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 896px; left: 640px;" src="map/radar89.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 896px; left: 768px;" src="map/radar90.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 896px; left: 896px;" src="map/radar91.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 896px; left: 1024px;" src="map/radar92.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 896px; left: 1152px;" src="map/radar93.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 896px; left: 1280px;" src="map/radar94.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 896px; left: 1408px;" src="map/radar95.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1024px; left: 0px;" src="map/radar96.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1024px; left: 128px;" src="map/radar97.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1024px; left: 256px;" src="map/radar98.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1024px; left: 384px;" src="map/radar99.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1024px; left: 512px;" src="map/radar100.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1024px; left: 640px;" src="map/radar101.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1024px; left: 768px;" src="map/radar102.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1024px; left: 896px;" src="map/radar103.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1024px; left: 1024px;" src="map/radar104.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1024px; left: 1152px;" src="map/radar105.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1024px; left: 1280px;" src="map/radar106.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1024px; left: 1408px;" src="map/radar107.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1152px; left: 0px;" src="map/radar108.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1152px; left: 128px;" src="map/radar109.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1152px; left: 256px;" src="map/radar110.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1152px; left: 384px;" src="map/radar111.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1152px; left: 512px;" src="map/radar112.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1152px; left: 640px;" src="map/radar113.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1152px; left: 768px;" src="map/radar114.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1152px; left: 896px;" src="map/radar115.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1152px; left: 1024px;" src="map/radar116.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1152px; left: 1152px;" src="map/radar117.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1152px; left: 1280px;" src="map/radar118.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1152px; left: 1408px;" src="map/radar119.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1280px; left: 0px;" src="map/radar120.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1280px; left: 128px;" src="map/radar121.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1280px; left: 256px;" src="map/radar122.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1280px; left: 384px;" src="map/radar123.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1280px; left: 512px;" src="map/radar124.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1280px; left: 640px;" src="map/radar125.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1280px; left: 768px;" src="map/radar126.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1280px; left: 896px;" src="map/radar127.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1280px; left: 1024px;" src="map/radar128.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1280px; left: 1152px;" src="map/radar129.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1280px; left: 1280px;" src="map/radar130.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1280px; left: 1408px;" src="map/radar131.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1408px; left: 0px;" src="map/radar132.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1408px; left: 128px;" src="map/radar133.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1408px; left: 256px;" src="map/radar134.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1408px; left: 384px;" src="map/radar135.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1408px; left: 512px;" src="map/radar136.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1408px; left: 640px;" src="map/radar137.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1408px; left: 768px;" src="map/radar138.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1408px; left: 896px;" src="map/radar139.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1408px; left: 1024px;" src="map/radar140.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1408px; left: 1152px;" src="map/radar141.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1408px; left: 1280px;" src="map/radar142.png"></img>
+							<img width="128" height="128" style="position: absolute; top: 1408px; left: 1408px;" src="map/radar143.png"></img>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			var setupMap = function(mapContainer, map) {
+				var MIN_SCALE = 0.2,
+					MAX_SCALE = 2.6,
+					SCALE_PER_SCROLL = 0.2;
+				var scale = 1.0,
+					translateX = 0,
+					translateY = 0,
+					panBeginX = null,
+					panBeginY = null,
+					panBeginTranslateY = 0,
+					panBeginTranslateX = 0,
+					pinchBeginDistance = null,
+					pinchBeginScale = null,
+					pinchBeginCenterX = null,
+					pinchBeginCenterY = null,
+					pinchBeginMapBoundX = null,
+					pinchBeginMapBoundY = null;
+
+				var updateTransform = function () {
+					map.style.webkitTransform = `scale(${scale}) translate(${translateX/scale}px, ${translateY/scale}px) translate3d(0,0,0)`;
+				}
+
+				// Mouse
+				var mousemove = function(e) {
+					translateX = panBeginTranslateX - (panBeginX - e.clientX);
+					translateY = panBeginTranslateY - (panBeginY - e.clientY);
+					updateTransform();
+				};
+				var mouseup = function(e) {
+					window.removeEventListener('mousemove', mousemove);
+					window.removeEventListener('mouseup', mouseup);
+					document.body.style.cursor = 'default';
+				};
+				map.addEventListener('mousedown', function (e) {
+					e.preventDefault();
+					window.addEventListener('mousemove', mousemove);
+					window.addEventListener('mouseup', mouseup);
+					document.body.style.cursor = 'move';
+					panBeginX = e.clientX;
+					panBeginY = e.clientY;
+					panBeginTranslateX = translateX;
+					panBeginTranslateY = translateY;
+				});
+				mapContainer.addEventListener('wheel', function(e) {
+					var rect = map.getBoundingClientRect(),
+						x = (e.clientX - rect.x) / scale,
+						y = (e.clientY - rect.y) / scale,
+						delta = e.wheelDelta ? e.wheelDelta : -e.deltaY,
+						m = delta > 0 ? SCALE_PER_SCROLL : -SCALE_PER_SCROLL,
+						newScale = scale + m;
+					
+					if (!(newScale >= MIN_SCALE && newScale <= MAX_SCALE)) {
+						return;
+					}
+
+					scale = newScale;
+					translateX += (-x * m);
+					translateY += (-y * m);
+
+					panBeginX = e.clientX;
+					panBeginY = e.clientY;
+					panBeginTranslateX = translateX;
+					panBeginTranslateY = translateY;
+					
+					updateTransform();
+				});
+
+				// Touch
+				function dist(e) {
+					var zw = e.touches[0].pageX - e.touches[1].pageX, zh = e.touches[0].pageY - e.touches[1].pageY;
+					return Math.sqrt(zw * zw + zh * zh);
+				}
+				mapContainer.addEventListener('touchstart', function(e) {
+					e.preventDefault();
+					if (e.touches.length == 1) {
+						panBeginX = e.touches[0].pageX;
+						panBeginY = e.touches[0].pageY;
+						panBeginTranslateX = translateX;
+						panBeginTranslateY = translateY;
+					} else if (e.touches.length >= 2) {
+						var rect = map.getBoundingClientRect();
+						pinchBeginDistance = dist(e);
+						pinchBeginScale = scale;
+						pinchBeginCenterX = (e.touches[0].pageX + e.touches[1].pageX) / 2;
+						pinchBeginCenterY = (e.touches[0].pageY + e.touches[1].pageY) / 2;
+						pinchBeginMapBoundX = rect.x;
+						pinchBeginMapBoundY = rect.y;
+					}
+				});
+				mapContainer.addEventListener('touchmove', function(e) {
+					e.preventDefault();
+					if (e.touches.length == 1) {
+						if (panBeginX == null) {
+							panBeginX = e.touches[0].pageX;
+							panBeginY = e.touches[0].pageY;
+							panBeginTranslateX = translateX;
+							panBeginTranslateY = translateY;
+						}
+						translateX = panBeginTranslateX - (panBeginX - e.touches[0].pageX);
+						translateY = panBeginTranslateY - (panBeginY - e.touches[0].pageY);
+						updateTransform();
+					} else if (e.touches.length >= 2) {
+						var centerX = (e.touches[0].pageX + e.touches[1].pageX) / 2,
+							centerY = (e.touches[0].pageY + e.touches[1].pageY) / 2,
+							newScale = dist(e) * pinchBeginScale / pinchBeginDistance;
+
+						if (newScale < MIN_SCALE) {
+							newScale = MIN_SCALE;
+						}
+						if (newScale > MAX_SCALE) {
+							newScale = MAX_SCALE;
+						}
+
+						scale = newScale;
+						translateX = centerX - ((pinchBeginCenterX - pinchBeginMapBoundX) / pinchBeginScale) * scale;
+						translateY = centerY - ((pinchBeginCenterY - pinchBeginMapBoundY) / pinchBeginScale) * scale;
+
+						panBeginX = null;
+						panBeginY = null;
+						panBeginTranslateX = null;
+						panBeginTranslateY = null;
+
+						updateTransform();
+					}
+				});
+				mapContainer.addEventListener('touchend', function(e) {
+					e.preventDefault();
+				});
+				mapContainer.addEventListener('touchcancel', function(e) {
+					e.preventDefault();
+				});
+			};
+
+			window.addEventListener('load', function() {
+				var mapContainer = document.getElementById('mapContainer'),
+					map = document.getElementById('map');
+				setupMap(mapContainer, map);
+			});
+		</script>
+	</body>
+</html>
+	
